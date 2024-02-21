@@ -13,7 +13,7 @@
 
 - **Win:** When a player makes a continuous stream of their symbol of size(N) in any way possible along, across or diagonally. Game is Over after a win.
 
-- **Lose:** When a player has won the game and it is over, the other player has lost the game.
+- **Lose:** When a player has won the game, and it is over, the other player has lost the game.
 
 - **Draw:** When all the cells are filled and no player has won the game, it is a draw. Game is Over after a draw.
 

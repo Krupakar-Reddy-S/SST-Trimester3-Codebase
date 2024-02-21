@@ -33,12 +33,20 @@ public class TreeNode {
     }
 
     private void printTree(TreeNode node, String prefix, boolean isTail, StringBuilder sb) {
+        // if (node.right != null) {
+        //     printTree(node.right, prefix + (isTail && !prefix.isEmpty() ? "│   " : "    "), false, sb);
+        // }
+        // sb.append(prefix + (isTail ? "└── " : "┌── ") + node.val + "\n");
+        // if (node.left != null) {
+        //     printTree(node.left, prefix + (!isTail && !prefix.isEmpty() ? "│   " : "    "), true, sb);
+        // }
+
         if (node.right != null) {
-            printTree(node.right, prefix + (isTail && !prefix.isEmpty() ? "│   " : "    "), false, sb);
+            printTree(node.right, prefix + (isTail && !prefix.isEmpty() ? "|   " : "    "), false, sb);
         }
-        sb.append(prefix + (isTail ? "└── " : "┌── ") + node.val + "\n");
+        sb.append(prefix + (isTail ? "+-- " : "+-- ") + node.val + "\n");
         if (node.left != null) {
-            printTree(node.left, prefix + (!isTail && !prefix.isEmpty() ? "│   " : "    "), true, sb);
+            printTree(node.left, prefix + (!isTail && !prefix.isEmpty() ? "|   " : "    "), true, sb);
         }
     }
 
