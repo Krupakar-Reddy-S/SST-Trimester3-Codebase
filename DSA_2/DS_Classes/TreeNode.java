@@ -25,6 +25,34 @@ public class TreeNode {
         preOrder(root.right);
     }
 
+    public void inOrder() {
+        inOrder(this);
+    }
+
+    public void inOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        inOrder(root.left);
+        System.out.println(root.val);
+        inOrder(root.right);
+    }
+
+    public void postOrder() {
+        postOrder(this);
+    }
+
+    public void postOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.println(root.val);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

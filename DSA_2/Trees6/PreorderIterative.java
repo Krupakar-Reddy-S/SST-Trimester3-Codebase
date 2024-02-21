@@ -38,7 +38,7 @@ public class PreorderIterative {
         rootA.right.right = new TreeNode(4);
 
         System.out.println(rootA);
-        System.out.println("Inorder Traversal:");
+        System.out.println("Preorder Traversal:");
         preorderIterative(rootA);
 
         // rootA.preOrder();
