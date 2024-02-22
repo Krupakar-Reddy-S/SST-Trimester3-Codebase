@@ -39,7 +39,8 @@ public class Trie {
             char curLetter = word.charAt(i);
             if (node.containsKey(curLetter)) {
                 node = node.get(curLetter);
-            } else {
+            } 
+            else {
                 return null;
             }
         }
@@ -58,17 +59,21 @@ public class Trie {
                 return null;
             }
             node.setEnd(false);
+
             return node;
         }
+
         char ch = word.charAt(index);
         TrieNode child = node.get(ch);
         if (child == null) {
             return null;
         }
+
         TrieNode next = delete(child, word, index + 1);
         if (next == null && !child.isEnd() && child.getChildren().isEmpty()) {
             node.getChildren().remove(ch);
         }
+
         return node;
     }
 
@@ -79,8 +84,8 @@ public class Trie {
 
     private StringBuilder printTrie(TrieNode node, String prefix, StringBuilder sb) {
         for (Map.Entry<Character, TrieNode> child : node.getChildren().entrySet()) {
-            sb.append(prefix);
-            sb.append(" '-- ");
+            sb.append("|" + prefix);
+            sb.append("'-- ");
             sb.append(child.getKey());
             sb.append(child.getValue().isEnd() ? " *" : "");
             sb.append("\n");
