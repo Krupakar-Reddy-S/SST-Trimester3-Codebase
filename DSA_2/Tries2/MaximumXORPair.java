@@ -9,7 +9,7 @@ public class MaximumXORPair {
      * 
     */
 
-    // TC = O(N), SC = O(1) [N = no. of elements in the array] :x:
+    // TC = O(N), SC = O(1) [N = no. of elements in the array] X
     // Since our datatypes and their sizes can vary generally TC = O(NlogM) [M = Max value in the given datatype]
     public static int[] maximumXORPair1(int[] arr) {
         int ans[] = new int[2];
