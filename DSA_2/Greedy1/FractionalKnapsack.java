@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class FractionalKnapsack {
 
     /* 
@@ -16,7 +18,45 @@ public class FractionalKnapsack {
      * 
     */
 
+    // TC = O(NlogN), SC = O(N) [N = number of items]
+    public static int fractionalKnapsack(int[] weight, int[] value, int W) {
+        int n = weight.length;
+        double[] cost = new double[n];
+
+        for (int i = 0; i < n; i++) {
+            cost[i] = (double) value[i] / weight[i];
+        }
+
+        Integer[] index = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            index[i] = i;
+        }
+
+        Arrays.sort(index, (a, b) -> Double.compare(cost[b], cost[a]));
+
+        int currentWeight = 0;
+        double finalValue = 0.0;
+
+        for (int i = 0; i < n; i++) {
+            if (currentWeight + weight[index[i]] <= W) {
+                currentWeight += weight[index[i]];
+                finalValue += value[index[i]];
+            } 
+            else {
+                int remainingWeight = W - currentWeight;
+                finalValue += cost[index[i]] * remainingWeight;
+                break;
+            }
+        }
+
+        return (int) finalValue;
+    }
+
     public static void main(String[] args) {
-        
+        int W = 50;
+        int[] weight = {10, 20, 30};
+        int[] value = {60, 100, 120};
+
+        System.out.println(fractionalKnapsack(weight, value, W));
     }
 }
