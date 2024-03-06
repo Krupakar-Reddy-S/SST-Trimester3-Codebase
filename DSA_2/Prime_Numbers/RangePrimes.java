@@ -66,10 +66,10 @@ public class RangePrimes {
     public static void main(String[] args) {
         boolean primes1[] = rangePrimes1(1000000000);
 
-        // for (int i = 2; i < primes1.length; i++) {
-        //     if (primes1[i]) {
-        //         System.out.println(i);
-        //     }
-        // }
+        for (int i = 2; i < primes1.length; i++) {
+            if (primes1[i]) {
+                System.out.println(i);
+            }
+        }
     }
 }
