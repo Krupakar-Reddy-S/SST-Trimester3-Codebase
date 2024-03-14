@@ -1,0 +1,389 @@
+﻿Q1. Create a class Person with following requirements
+
+Should have a data-member age
+Should have a data-member name
+Should support a constructor with both age and name
+
+#Code -------->
+public class Person {
+// write the code of Person class here
+   int age;
+    String name;
+    public Person(int age, String name){
+        this.age = age;
+        this.name = name;
+    }
+}
+
+
+Q2. Create a set of classes to meet following requirements
+
+a. Create a class Point
+
+i. It should have 2 data-members: x and y ii. Add a constructor with two parameters: x and y iii. Add a copy constructor
+
+
+b. Create a class Rectangle
+
+i. It should have 2 data-members
+
+- 1. topLeft (Point)
+- 2. bottomRight (Point)
+
+ii. Add a constructor with 4 parameters of type int: topLeftX, topLeftY, bottomRightX, bottomRightY
+iii. Add a constructor with 2 parameters of type Point: topLeft, bottomRight
+iv. Add a constructor with 1 parameter of type Rectangle
+v. Make sure that Rectangle constructors make deep copies
+
+#Code --------------->
+
+public class Point {
+    // write the code of point class here
+    int x;
+    int y;
+    public Point(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    public Point(Point other){
+        this(other.x, other.y);
+    }
+}
+
+
+
+
+public class Rectangle {
+    // write the code of Rectangle class here
+    Point topLeft;
+    Point bottomRight;
+
+
+    public Rectangle(int topLeftX, int topLeftY, int bottomRightX, int bottomRightY){
+        this.topLeft= new Point(topLeftX,topLeftY);
+   
+        this.bottomRight=new Point( bottomRightX,bottomRightY);
+     
+    }
+    public Rectangle(Point topLeft, Point bottomRight){
+        this.topLeft = new Point(topLeft);
+        this.bottomRight = new Point(bottomRight);
+    }
+    public Rectangle(Rectangle other){
+        this(other.topLeft, other.bottomRight);
+    }
+}
+
+
+Q3. Create a class Point.
+It should have 2 data-members:
+x:int
+y:int
+Create a class Circle.
+It should have 2 data-members
+center:Point
+radius:int
+It should have 3 methods
+getArea: It should return area of circle as a double
+getParameter: It should return parameter of circle as a double
+isOverlapping: It should take another Circle as parameter and return true if the current circle overlaps with the circle passed as parameter and false otherwise.
+
+#Code -------------->
+
+public class Circle {
+    // write the code of circle class here
+    Point center;
+    int radius;
+
+
+    double getArea(){
+        return Math.PI * radius * radius;
+    }
+
+
+    double getParameter(){
+        return 2 * Math.PI * radius;
+    }
+
+
+    boolean isOverlapping(Circle other){
+        int dx = center.x - other.center.x;
+        int dy = center.y - other.center.y;
+        double distance = Math.sqrt(dx*dx + dy*dy);
+        if(distance < this.radius + other.radius){
+            return true;
+        }
+        return false;
+    }
+}
+
+
+
+
+public class Circle {
+    // write the code of circle class here
+    Point center;
+    int radius;
+
+
+    double getArea(){
+        return Math.PI * radius * radius;
+    }
+
+
+    double getParameter(){
+        return 2 * Math.PI * radius;
+    }
+
+
+    boolean isOverlapping(Circle other){
+        int dx = center.x - other.center.x;
+        int dy = center.y - other.center.y;
+        double distance = Math.sqrt(dx*dx + dy*dy);
+        if(distance < this.radius + other.radius){
+            return true;
+        }
+        return false;
+    }
+}
+
+Q4. It should have 3 data members
+accountNumber: String
+balance: int
+roi:double (Should represent rate of interest)
+It should have 2 methods
+getSimpleInterest: It should take time (in years) as a parameter. The data type of time should be int. It should return Simple Interest as a double.
+getBalanceWithInterest: It should take time (in years) as a parameter. The data type of time should be int. It should return a new balance (including simple interest) as a double.
+
+#Code ---------------------->
+
+public class BankAccount {
+    // write the code of bank account class here
+    String accountNumber;
+    int balance;
+    double roi;
+
+
+    double getSimpleInterest(int years){
+        return (balance * roi * years) / 100;
+    }
+    double getBalanceWithInterest(int years){
+        return balance + getSimpleInterest(years);
+    }
+}
+
+
+
+
+
+OOP - 2: Inheritance, Access Modifiers, Constructors
+
+
+Q1. Create a Node class with following requirements
+
+Two data members
+i. data:int
+ii. next:Node
+A constructor which takes an integer parameter. This constructor should set data property and leave the next set to null.
+A constructor which takes a Node parameter. This constructor should make a deep copy of the passed node.
+
+#Code ------------->
+public class Node {
+    // write the code of node class here
+    int data;
+    Node next;
+
+
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+    public Node(Node other){
+       // this(other.data, other.next);
+       this.data=other.data;
+
+
+       if(other.next!=null){
+        this.next=new Node(other.next);
+       }
+       else
+       this.next=null;
+
+
+    }
+}
+
+
+Q2. Create a class Student with following requirements
+i. Two data members
+age:int
+name:String
+ii. Four constructors
+Default constructor: Should set age to 0 and name to null
+Constructor with int parameter: Should set age to the passed parameter and name to null
+Constructor with String parameter: Should set name to the passed parameter and age to 0
+Constructor with two parameters - int and String. Should set the age to int parameter and name to String parameter
+The assignment code should only be in the 4th constructor. The top 3 constructors should use telescoping to invoke the 4th constructor.
+
+#Code ------------------>
+public class Student {
+    // write the code of student class here
+    int age;
+    String name;
+
+
+    public Student(){
+        this.age = 0;
+        this.name = null;
+    }
+
+
+    public Student(int age){
+        this.age = age;
+        this.name = null;
+    }
+
+
+    public Student(String name){
+        this.name = name;
+        this.age = 0;
+    }
+   
+    public Student(int age, String name){
+        this.age = age;
+        this.name = name;
+    }
+}
+
+
+
+
+Q3. Create a set of class with following requirements:
+
+
+a. Create a class Point
+
+
+i. It should have two data members
+x:int
+y: int
+It should have a display method that prints in following format - “[<<x>>, <<y>>]”
+x and y should be protected and display should be public
+
+b. Create another class ThreedPoint which extends the Point class
+
+
+It should have the following data members: z:int
+It should have a display method to override the parent’s display method which prints in following format - “[<<x>>, <<y>>, <<z>>]”
+z should be private and display should be public.
+
+
+#Code ------------------->
+public class Point {
+    protected int x;
+    protected int y;
+
+
+    public void display() {
+        System.out.println("[" + x + ", " + y + "]");
+    }
+}
+
+
+public class ThreedPoint extends Point {
+    private int z;
+
+
+    @Override
+    public void display() {
+        System.out.println("[" + x + ", " + y + ", " + z + "]");
+    }
+}
+
+
+
+
+OOP - 3: Polymorphism, Static, and Final Keywords
+
+
+Q1. Create the set of classes and interfaces to meet the following requirements
+An interface I1 with following methods
+fun1():void
+fun(): void
+An interface I2 with following methods
+fun2():void
+fun():void
+An interface I extending both I1 and I2 with no methods
+A class C implementing interface I
+
+
+#Code ------------------->
+
+interface I1{
+    void fun1();
+    void fun();
+}
+interface I2{
+    void fun2();
+    void fun();
+}
+interface I extends I1, I2{
+
+
+}
+class C implements I{
+    @Override
+    public void fun1(){
+
+
+    }
+    @Override
+    public void fun2(){
+
+
+    }
+    @Override
+    public void fun(){
+
+
+    }
+}
+
+
+Q2. Write a class Car with following requirements
+It should have 2 data-members
+Price: int
+Speed: int
+We should be able to sort a Collection or Array of Cars on price.
+Implement required interface for that
+
+#Code ------------------>
+
+class Car implements Comparable<Car>{
+    int Price;
+    int Speed;
+
+
+    @Override
+    public int compareTo(Car another){
+        return this.Price - another.Price;
+    }
+}
+
+
+
+
+Q3.Create a class Math with following requirements
+- A class level data member called PI set to 3.14
+- A class level method called getCircleArea, which takes as input an integer parameter called radius. This function should return area of the circle as a double
+
+#Code ---------------------->
+public class Math {
+// write code for Math class here
+    public static final double PI = 3.14;
+
+
+    public static double getCircleArea(int radius){
+        return PI * radius * radius;
+    }
+}

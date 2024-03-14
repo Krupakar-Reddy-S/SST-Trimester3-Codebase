@@ -64,7 +64,7 @@ public class RangePrimes {
     // Sieve of Atkin TC = O(N) 
 
     public static void main(String[] args) {
-        boolean primes1[] = rangePrimes1(1000000000);
+        boolean primes1[] = rangePrimes2(1000000000);
 
         // for (int i = 2; i < primes1.length; i++) {
         //     if (primes1[i]) {
