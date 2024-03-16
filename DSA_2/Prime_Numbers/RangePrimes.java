@@ -65,6 +65,7 @@ public class RangePrimes {
 
     public static void main(String[] args) {
         boolean primes1[] = rangePrimes2(1000000000);
+        System.out.println(primes1);
 
         // for (int i = 2; i < primes1.length; i++) {
         //     if (primes1[i]) {

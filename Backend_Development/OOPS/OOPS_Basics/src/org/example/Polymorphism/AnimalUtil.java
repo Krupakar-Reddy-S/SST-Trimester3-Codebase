@@ -1,4 +1,4 @@
-package Polymorphism;
+package org.example.Polymorphism;
 
 public class AnimalUtil {
     public void printAnimalName(Animal animal) {

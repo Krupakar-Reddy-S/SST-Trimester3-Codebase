@@ -1,4 +1,4 @@
-package Polymorphism;
+package org.example.Polymorphism;
 
 public class Cat extends Animal{
 
