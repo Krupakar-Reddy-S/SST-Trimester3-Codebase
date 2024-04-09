@@ -12,7 +12,7 @@ import com.sst.productservicesst.exceptions.ProductNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service("fakeStoreProductService")
 public class FakeStoreProductService implements ProductService {
 
     @Override
@@ -46,6 +46,11 @@ public class FakeStoreProductService implements ProductService {
         }
 
         return products;
+    }
+
+    @Override
+    public Product createProduct(Product product) {
+        return null;
     }
 
     private Product FakeStoreProductMapping(FakeStoreProductDto fakeStoreProductDto) {
