@@ -16,7 +16,8 @@ public class Product {
     private String title;
     private String description;
     private Double price;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
     private String imageUrl;
+    // private int quantity;
 }

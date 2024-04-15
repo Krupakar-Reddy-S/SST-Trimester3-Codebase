@@ -1,5 +1,6 @@
 package com.sst.productservicesst.services;
 
+import com.sst.productservicesst.exceptions.CategoryNotFoundException;
 import com.sst.productservicesst.exceptions.ProductNotFoundException;
 import com.sst.productservicesst.models.Category;
 import com.sst.productservicesst.models.Product;
@@ -14,8 +15,8 @@ import java.util.Optional;
 @Service("selfProductService")
 // @Primary
 public class SelfProductService implements ProductService {
-    private ProductRepository productRepository;
-    private CategoryRepository categoryRepository;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     public SelfProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
@@ -35,7 +36,7 @@ public class SelfProductService implements ProductService {
 
     @Override
     public List<Product> getAllProducts() {
-        return null;
+        return productRepository.findAll();
     }
 
     @Override
@@ -43,10 +44,18 @@ public class SelfProductService implements ProductService {
         Category category = product.getCategory();
 
         if (category.getId() == null) { // save the category
-            Category savedCategory = categoryRepository.save(category);
-            product.setCategory(savedCategory);
+            product.setCategory(categoryRepository.save(category));
         }
 
-        return productRepository.save(product);
+        Product product1 = productRepository.save(product);
+        Optional<Category> optionalCategory = categoryRepository.findById(category.getId());
+
+        if (optionalCategory.isEmpty()) {
+            throw new CategoryNotFoundException(category.getId(), "Invalid Category Id passed!");
+        }
+
+        product1.setCategory(optionalCategory.get());
+
+        return product1;
     }
 }
