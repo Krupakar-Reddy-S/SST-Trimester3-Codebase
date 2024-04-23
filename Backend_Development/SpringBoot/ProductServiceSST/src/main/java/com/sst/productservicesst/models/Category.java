@@ -1,8 +1,7 @@
 package com.sst.productservicesst.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
